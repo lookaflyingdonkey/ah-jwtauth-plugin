@@ -1,0 +1,30 @@
+{
+  "author": {
+    "name": "Dean Collins",
+    "email": "lookaflyingdonkey@icloud.com"
+  },
+  "license": "MIT",
+  "name": "ah-jwtauth-plugin",
+  "description": "Implements JWT Authentication",
+  "version": "0.1.0",
+  "homepage": "http://dblog.com.au",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lookaflyingdonkey/ah-jwtauth-plugin.git"
+  },
+  "keywords": [
+    "actionhero",
+    "jwt",
+    "authentication"
+  ],
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^1.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "postinstall": "scripts/postinstall.js"
+  }
+}
