@@ -4,8 +4,8 @@ Uses auth0 node-jsonwebtoken to allow token authentication of actions, It is a r
 The original was developed by https://github.com/lookaflyingdonkey/ah-jwtauth-plugin and forked because of missing maintenance.
 
 ## Installation
-- npm install ifavo/ah-jwtauth-plugin --save
-- Add the "ah-jwtauth-plugin" plugin to your ActionHero config
+* `npm install ifavo/ah-jwtauth-plugin --save`
+* Add the "ah-jwtauth-plugin" plugin to your ActionHero config
 
 ## Usage
 This plugin will check your action templates for a property called "authenticate", if it exists and is true it will then require that a "Authorization" header has been sent with the request holding a valid JSON Web Token. I make use of the node-jsonwebtoken module (https://github.com/auth0/node-jsonwebtoken) to generate and validate the tokens.
