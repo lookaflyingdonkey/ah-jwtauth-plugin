@@ -4,8 +4,9 @@ Uses auth0 node-jsonwebtoken to allow token authentication of actions, It is a r
 The original was developed by https://github.com/lookaflyingdonkey/ah-jwtauth-plugin and forked because of missing maintenance.
 
 ## Installation
-* `npm install ifavo/ah-jwtauth-plugin --save`
-* Add the "ah-jwtauth-plugin" plugin to your ActionHero `config/plugins.js`:
+`npm install ifavo/ah-jwtauth-plugin --save`
+
+Add the `ah-jwtauth-plugin` plugin to your ActionHero `config/plugins.js`:
 
     exports['default'] = {
       general: function(api)
@@ -33,9 +34,9 @@ Test it with curl:
 Token data sent via `Authorization` Headers will be provided in your action within `data._jwtTokenData`:
 
     […]
-    run: function(api, data, next){
+    run: function(api, data, next) {
         data.response.tokenData = data._jwtTokenData;
-        […]
+    […]
 
 ### Settings
 * You can select the algorithm you want to use with the options available at https://github.com/auth0/node-jsonwebtoken
