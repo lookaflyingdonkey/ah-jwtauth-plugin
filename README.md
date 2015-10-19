@@ -57,7 +57,34 @@ You need to generate a token once a user has successfully authenticated against 
       next();
 
     });
-    
+
+You can also add options like expiry time:
+
+    // token expires in 60s
+    api.jwtauth.generateToken({id: 1234, email: 'test@example.com'}, {expiresIn: "60s"}, function(token) {
+
+      // token will hold the generated token
+      data.response.token = token;
+      next();
+
+    }, function(err) {
+
+      // An error occured generating a token
+      data.error = err;
+      next();
+
+    });
+
+Options are:
+
+* `expiresIn`: expressed in seconds or an string describing a time span [rauchg/ms](https://github.com/rauchg/ms.js). Eg: `60`, `"2 days"`, `"10h"`, `"7d"`
+* `audience`
+* `subject`
+* `issuer`
+* `noTimestamp`
+* `headers`
+
+
 I would suggest not storing a huge amount of information in them as it will just mean more data transferred per request, but you can put some identifying info like email, name, etc. The beauty of this is that you don't need to hit the database every time to authenticate a user.
         
 ### Validate a token
@@ -73,6 +100,3 @@ While the plugin will automatically validate a token and put it on the connectio
       console.log('Error', err);
 
     });
-
-## Todo
-* Need to add in expiry, I personally dont use it but I may add it to my app with refreshing tokens in the future.

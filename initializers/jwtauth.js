@@ -8,21 +8,33 @@ module.exports = {
         api.jwtauth = {
             processToken: function(token, success, fail) {
                 jsonwebtoken.verify(token, api.config.jwtauth.secret, {}, function(err, data) {
-                if(err) {
-                  fail(err);
-                } else {
-                  success(data);
-                }
-            });
-        },
-        generateToken: function(data, success, fail) {
-            try {
-                var token = jsonwebtoken.sign(data, api.config.jwtauth.secret, {
-                  algorithm: api.config.jwtauth.algorithm
+                    if (err) {
+                      fail(err);
+                    }
+                    else {
+                      success(data);
+                    }
                 });
-                success(token);
-                } catch(err) {
-                fail(err);
+            },
+            generateToken: function(data, options, success, fail) {
+                if ( typeof(options) == 'function' ) {
+                    fail = success;
+                    success = options;
+                    options = {};
+                }
+                else {
+                    options = options || {};
+                }
+                if ( !options.algorithm ) {
+                    options.algorithm = api.config.jwtauth.algorithm;
+                }
+
+                try {
+                    var token = jsonwebtoken.sign(data, api.config.jwtauth.secret, options);
+                    success(token);
+                }
+                catch(err) {
+                    fail(err);
                 }
             }
         };
