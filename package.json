@@ -6,7 +6,7 @@
   "license": "MIT",
   "name": "ah-jwtauth-plugin",
   "description": "Implements JWT Authentication",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "http://dblog.com.au",
   "repository": {
     "type": "git",
