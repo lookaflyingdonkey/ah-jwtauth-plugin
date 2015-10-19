@@ -3,7 +3,7 @@
 Uses auth0 node-jsonwebtoken to allow token authentication of actions, It is a really slimmed down version of panjiesw's plugin over at https://github.com/panjiesw/ah-auth-plugin as I didn't want to make the assumptions around users and email systems. 
 
 ## Installation
-- npm install ifavo/ah-jwtauth-plugin --save
+- npm install ah-jwtauth-plugin --save
 - Add the "ah-jwtauth-plugin" plugin to your ActionHero config
 
 ## Usage
