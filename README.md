@@ -3,7 +3,7 @@
 Uses auth0 node-jsonwebtoken to allow token authentication of actions, It is a really slimmed down version of panjiesw's plugin over at https://github.com/panjiesw/ah-auth-plugin as I didn't want to make the assumptions around users and email systems. 
 
 ## Installation
-- Install the plugin with npm install ah-jwtauth-plugin --save
+- npm install ifavo/ah-jwtauth-plugin --save
 - Add the "ah-jwtauth-plugin" plugin to your ActionHero config
 
 ## Usage
@@ -20,14 +20,14 @@ You need to generate a token once a user has successfully authenticated against 
  
     api.jwtauth.generateToken({id: 1234, email: 'test@example.com'}, function(token) {
       // token will hold the generated token
-      connection.response.token = token;
-      next(connection, true);
+      data.response.token = token;
+      next();
     }, function(err) {
       // An error occured generating a token
-      connection.error = err;
-      next(connection, false);
+      data.error = err;
+      next();
     });
-
+    
 I would suggest not storing a huge amount of information in them as it will just mean more data transferred per request, but you can put some identifying info like email, name, etc. The beauty of this is that you don't need to hit the database every time to authenticate a user.
         
 ### Validate a token
