@@ -1,16 +1,16 @@
 {
   "author": {
-    "name": "Dean Collins",
-    "email": "lookaflyingdonkey@icloud.com"
+    "name": "Mario Micklisch",
+    "email": "mario@favo.org"
   },
   "license": "MIT",
   "name": "ah-jwtauth-plugin",
   "description": "Implements JWT Authentication",
   "version": "0.2.0",
-  "homepage": "http://dblog.com.au",
+  "homepage": "http://favo.org",
   "repository": {
     "type": "git",
-    "url": "git@github.com:lookaflyingdonkey/ah-jwtauth-plugin.git"
+    "url": "git@github.com:ifavo/ah-jwtauth-plugin.git"
   },
   "keywords": [
     "actionhero",
@@ -26,5 +26,9 @@
   "devDependencies": {},
   "scripts": {
     "postinstall": "scripts/postinstall.js"
+  },
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/ifavo/ah-jwtauth-plugin/issues"
   }
 }
