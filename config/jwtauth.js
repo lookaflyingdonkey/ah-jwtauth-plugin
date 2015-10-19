@@ -7,7 +7,7 @@ exports.default = {
         socket: false,
         testServer: false
       },
-      secret: 'changeme',
+      secret: api.config.serverToken + 'Change Me!',
       algorithm: 'HS512'
     }
   }
@@ -22,7 +22,7 @@ exports.test = {
         socket: false,
         testServer: false
       },
-      secret: 'changeme',
+      secret: api.config.serverToken + 'Change Me!',
       algorithm: 'HS512'
     }
   }
@@ -37,7 +37,7 @@ exports.production = {
         socket: false,
         testServer: false
       },
-      secret: 'changeme',
+      secret: api.config.serverToken + 'Change Me!',
       algorithm: 'HS512'
     }
   }
