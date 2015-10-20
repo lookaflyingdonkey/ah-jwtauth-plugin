@@ -4,7 +4,7 @@
     "email": "mario@favo.org"
   },
   "license": "MIT",
-  "name": "ah-jwtauth-plugin",
+  "name": "ah-jwtauth2-plugin",
   "description": "Implements JWT Authentication",
   "version": "0.2.0",
   "homepage": "http://favo.org",
