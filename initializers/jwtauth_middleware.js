@@ -47,7 +47,7 @@ module.exports = {
 
                     if (token) {
                         api.jwtauth.processToken(token, function(tokenData) {
-                            data._jwtTokenData = tokenData;
+                            data.connection._jwtTokenData = tokenData;
                             next();
                         }, function(err) {
                             next(err);
