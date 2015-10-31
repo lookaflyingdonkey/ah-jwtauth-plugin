@@ -31,11 +31,11 @@ Test it with curl:
 
     curl http://localhost:8080/yourAction --header "Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MTIzNCwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNDQ1Mjc2NDYyfQ.vB5yV2PGOj1oVIsqDDU7uWlkrf--a1TX2EtsqSDkjqyCGzho1rYO-AQgsDxsKcf5rocmeAx_4Jq4A3wHff2euQ"
 
-Token data sent via `Authorization` Headers will be provided in your action within `data._jwtTokenData`:
+Token data sent via `Authorization` Headers will be provided in your action within `data.connection._jwtTokenData`:
 
     […]
     run: function(api, data, next) {
-        data.response.tokenData = data._jwtTokenData;
+        data.response.tokenData = data.connection._jwtTokenData;
     […]
 
 ### Settings
