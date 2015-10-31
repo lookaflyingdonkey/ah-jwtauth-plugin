@@ -31,10 +31,14 @@ module.exports = {
 
                 try {
                     var token = jsonwebtoken.sign(data, api.config.jwtauth.secret, options);
-                    success(token);
+                    if ( success ) {
+                        success(token);
+                    }
                 }
                 catch(err) {
-                    fail(err);
+                    if ( fail ) {
+                        fail(err);
+                    }
                 }
             }
         };
