@@ -10,9 +10,9 @@ module.exports = {
             preProcessor: function(data, next) {
                 if (data.actionTemplate.authenticate && api.config.jwtauth.enabled[data.connection.type] && api.config.jwtauth.enabled[data.connection.type] === true) {
                     var req = data.connection.rawConnection.req;
-                    if (!req && data.mockHeaders) {
+                    if ( !req && data.connection.mockHeaders ) {
                         req = {
-                            headers: data.mockHeaders
+                            headers: data.connection.mockHeaders
                         };
                     }
 
@@ -48,6 +48,7 @@ module.exports = {
                     if (token) {
                         api.jwtauth.processToken(token, function(tokenData) {
                             data.connection._jwtTokenData = tokenData;
+                            console.log(tokenData);
                             next();
                         }, function(err) {
                             next(err);

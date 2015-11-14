@@ -38,6 +38,19 @@ Token data sent via `Authorization` Headers will be provided in your action with
         data.response.tokenData = data.connection._jwtTokenData;
     […]
 
+
+Tests can be done with mockHeaders when running actions:
+
+    […]
+    var connection = new api.specHelper.connection();
+    connection.mockHeaders = {
+        authorization: "Token " + token
+    };
+    connection.params = {};
+
+    api.specHelper.runAction('<ACTION>', connection, function(response) {
+    […]
+
 ### Settings
 * You can select the algorithm you want to use with the options available at https://github.com/auth0/node-jsonwebtoken
 * You will need to set a secret that will be used to create the token
