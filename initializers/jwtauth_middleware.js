@@ -10,9 +10,9 @@ module.exports = {
             preProcessor: function(data, next) {
                 if (data.actionTemplate.authenticate && api.config.jwtauth.enabled[data.connection.type] && api.config.jwtauth.enabled[data.connection.type] === true) {
                     var req = data.connection.rawConnection.req;
-                    if ( !req && data.connection.mockHeaders ) {
+                    if ( !req ) {
                         req = {
-                            headers: data.connection.mockHeaders
+                            headers: data.connection.mockHeaders || {}
                         };
                     }
 
@@ -41,8 +41,8 @@ module.exports = {
                     }
 
                     // if GET parameter for tokens is allowed, use it
-                    if (!token && api.config.jwtauth.enableGet && data.connection.rawConnection.req.uri && data.connection.rawConnection.req.uri.query && data.connection.rawConnection.req.uri.query.token) {
-                        token = data.connection.rawConnection.req.uri.query.token;
+                    if (!token && api.config.jwtauth.enableGet && req.uri && req.uri.query && req.uri.query.token) {
+                        token = req.uri.query.token;
                     }
 
                     if (token) {
