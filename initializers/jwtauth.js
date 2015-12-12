@@ -1,10 +1,10 @@
 var jsonwebtoken = require('jsonwebtoken');
 module.exports = {
-    loadPriority: 1000,
-    startPriority: 1000,
-    stopPriority: 1000,
+    loadPriority: 999,
+    startPriority: 999,
+    stopPriority: 999,
 
-    start: function(api, next) {
+    initialize: function(api, next) {
         api.jwtauth = {
             processToken: function(token, success, fail) {
 
@@ -41,6 +41,9 @@ module.exports = {
                 }
             }
         };
+        next();
+    },
+    start: function(api, next) {
         next();
     },
     stop: function(api, next) {
