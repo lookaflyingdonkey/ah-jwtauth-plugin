@@ -9,9 +9,10 @@ module.exports = {
             global: true,
             preProcessor: function(data, next) {
 
-                // not configured to be used
-                if (!data.actionTemplate.authenticate || !api.config.jwtauth.enabled[data.connection.type]) {
-                    return next();
+                // is it required to have a valid token to access an action?
+                var tokenRequired = false;
+                if (data.actionTemplate.authenticate && api.config.jwtauth.enabled[data.connection.type]) {
+                    tokenRequired = true;
                 }
 
                 // get request data from the required sources
@@ -27,10 +28,18 @@ module.exports = {
                 if (authHeader) {
                     var parts = authHeader.split(' ');
                     if (parts.length != 2 || parts[0].toLowerCase() !== 'token') {
-                        return next({
-                            code: 500,
-                            message: 'Invalid Authorization Header'
-                        });
+                    
+                    	// return error if token was required and missing
+                    	if ( tokenRequired ) {
+							return next({
+								code: 500,
+								message: 'Invalid Authorization Header'
+							});
+						}
+						else {
+							return next();
+						}
+
                     }
                     token = parts[1];
                 }
@@ -40,18 +49,26 @@ module.exports = {
                     token = req.uri.query.token;
                 }
 
-                if (!token) {
+				// return error if token was missing but marked as required
+                if (tokenRequired && !token) {
                     return next({
                         code: 500,
                         message: 'Authorization Header Not Set'
                     });
                 }
+                
+				// process token and save in connection
+                else if (token) {
+					api.jwtauth.processToken(token, function(tokenData) {
+						data.connection._jwtTokenData = tokenData;
+						next();
+					}, next);
+				}
+				
+				else {
+					return next();
+				}
 
-                // process token and save in connection
-                api.jwtauth.processToken(token, function(tokenData) {
-                    data.connection._jwtTokenData = tokenData;
-                    next();
-                }, next);
             },
 
             stop: function(api, next) {
