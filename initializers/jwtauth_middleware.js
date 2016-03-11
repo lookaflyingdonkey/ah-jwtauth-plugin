@@ -60,6 +60,7 @@ module.exports = {
 				// process token and save in connection
                 else if (token) {
 					api.jwtauth.processToken(token, function(tokenData) {
+						data.connection._jwtToken = token;
 						data.connection._jwtTokenData = tokenData;
 						next();
 					}, next);
