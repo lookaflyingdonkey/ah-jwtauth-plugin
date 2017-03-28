@@ -7,8 +7,9 @@ exports.default = {
         socket: false,
         testServer: false
       },
-      secret: 'changeme',
-      algorithm: 'HS512'
+      secret: api.config.serverToken + 'Change Me!',
+      algorithm: 'HS512',
+      enableGet: false // enables token as GET parameters in addition to Authorization headers
     }
   }
 }
@@ -22,8 +23,9 @@ exports.test = {
         socket: false,
         testServer: false
       },
-      secret: 'changeme',
-      algorithm: 'HS512'
+      secret: api.config.serverToken + 'Change Me!',
+      algorithm: 'HS512',
+      enableGet: false // enables token as GET parameters in addition to Authorization headers
     }
   }
 }
@@ -37,8 +39,9 @@ exports.production = {
         socket: false,
         testServer: false
       },
-      secret: 'changeme',
-      algorithm: 'HS512'
+      secret: api.config.serverToken + 'Change Me!',
+      algorithm: 'HS512',
+      enableGet: false // enables token as GET parameters in addition to Authorization headers
     }
   }
 }
