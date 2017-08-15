@@ -6,18 +6,9 @@ The original was developed by https://github.com/lookaflyingdonkey/ah-jwtauth-pl
 ## Installation
 `npm install ah-jwtauth2-plugin --save`
 
-Add the `ah-jwtauth2-plugin` plugin to your ActionHero `config/plugins.js`:
+## Linking the Plugin
 
-    exports['default'] = {
-      general: function(api)
-      {
-        return {
-          plugins: [
-            'ah-jwtauth2-plugin'
-          ]
-        };
-      }
-    };
+`npm run actionhero -- link --name 'ah-jwtauth2-plugin`
 
 ## Usage
 This plugin will check your action templates for a property called `authenticate`, if it exists and is true it will then require that a "Authorization" header has been sent with the request holding a valid JSON Web Token. I make use of the node-jsonwebtoken module (https://github.com/auth0/node-jsonwebtoken) to generate and validate the tokens.  
